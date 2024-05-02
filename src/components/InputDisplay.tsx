@@ -1,5 +1,6 @@
 import React, { useState, ReactNode, useEffect } from 'react';
 import { Card, FormControl, Button, Container, Row, Col, Form, InputGroup } from 'react-bootstrap';
+import {userData} from "../services/Helper";
 
 type Status = {
   id: string;
@@ -25,12 +26,13 @@ const InputDisplay = () => {
     setDisplays(prevDisplays => [...prevDisplays, { id: Date.now().toString(), statusText: newDisplay }]);    setInput('');
 
     // Send the content to localhost:8080/statuses
+    console.log(userData())
     fetch('http://localhost:8080/statuses', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ statusText: newDisplay })
+      body: JSON.stringify({ statusText: newDisplay, userID: userData().id })
     }).then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok');

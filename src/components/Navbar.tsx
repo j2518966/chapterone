@@ -11,6 +11,9 @@ const Navbar = () => {
                     <Nav className="me-auto">
                         {/* Add Nav.Link components here for additional links in your navbar */}
                     </Nav>
+                    <Nav className="ml-auto">
+                        <Nav.Link href="/logout">Logout</Nav.Link>
+                    </Nav>
                 </BootstrapNavbar.Collapse>
             </Container>
         </BootstrapNavbar>
